@@ -17,16 +17,17 @@ module.exports = {
     rules: [
       {
         test: /\.((png)|(eot)|(woff)|(woff2)|(ttf)|(svg)|(gif))(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file-loader?name=/[hash].[ext]"
+        type: 'asset/resource',
+        generator: {
+          filename: '/[hash][ext]'
+        }
       },
-
-      {test: /\.json$/, loader: "json-loader"},
 
       {
         loader: "babel-loader",
         test: /\.js?$/,
         exclude: /node_modules/,
-        query: {cacheDirectory: true}
+        options: {cacheDirectory: true}
       },
 
       {
@@ -48,12 +49,13 @@ module.exports = {
       prettyPrint: true
     }),
 
-    new CopyWebpackPlugin([
-      {
-        from: "./src/fonts/",
-        to: "fonts/",
-        flatten: true
-      }
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "./src/fonts/",
+          to: "fonts/"
+        }
+      ]
+    })
   ]
 };
