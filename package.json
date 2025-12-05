@@ -65,7 +65,7 @@
   "dependencies": {
     "css-minimizer-webpack-plugin": "^7.0.2",
     "lodash": "^4.17.21",
-    "sass": "^1.90.0",
+    "sass": "^1.94.0",
     "terser-webpack-plugin": "^5.3.14"
   }
 }
